@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Will You Be My Valentine?</title>
+
+  <!-- Google Fonts: elegant + handwritten -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Dancing+Script:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <!-- Password Gate -->
+  <section id="gate" class="gate">
+    <div class="gate__content">
+      <p class="gate__hint">Only you can enter 💌</p>
+      <div class="gate__form">
+        <input id="passwordInput" type="password" placeholder="Enter password" autocomplete="off" />
+        <button id="enterBtn">Enter</button>
+      </div>
+      <p id="gateError" class="gate__error" aria-live="polite"></p>
+      <div id="bgMusicWrap" class="bg-music">
+        <audio
+          id="bgAudio"
+          src="https://raw.githubusercontent.com/shouryachhabra1319-droid/valentines/main/valentine/Ed%20Sheeran%20-%20Perfect%20(Official%20Music%20Video)-%5BAudioTrimmer.com%5D.mp3"
+          autoplay
+          loop
+        ></audio>
+      </div>
+    </div>
+    <div class="ambient"></div>
+  </section>
+
+  <!-- Main Site -->
+  <main id="mainSite" class="hidden">
+    <!-- Landing / Hero -->
+    <section class="section hero" id="home">
+      <div class="hero__inner">
+        <h1>Hey love… I built something just for you.</h1>
+        <p class="subtext">A tiny corner of the internet where my heart lives.</p>
+        <button class="primary" id="continueBtn">Continue</button>
+      </div>
+      <div class="floating-stream" aria-hidden="true"></div>
+      <div class="floating-hearts" aria-hidden="true"></div>
+    </section>
+  </main>
+
+  <!-- Deployment Note -->
+  <!-- To deploy on Vercel: drag & drop this folder into Vercel, or push to GitHub and import. -->
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
