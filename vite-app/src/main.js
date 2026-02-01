@@ -13,10 +13,26 @@ const continueBtn = document.getElementById("continueBtn");
 const finalContinue = document.getElementById("finalContinue");
 const photosContinue = document.getElementById("photosContinue");
 const musicContinue = document.getElementById("musicContinue");
+const restartBtn = document.getElementById("restartBtn");
 
 const tryStartBgAudio = () => {
   if (!bgAudio) return;
   bgAudio.play().catch(() => {});
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.body.classList.add("loaded");
+});
+
+const navigateWithFade = (url) => {
+  if (!document.body.classList.contains("page-fade")) {
+    window.location.href = url;
+    return;
+  }
+  document.body.classList.remove("loaded");
+  setTimeout(() => {
+    window.location.href = url;
+  }, 550);
 };
 
 if (bgAudio && localStorage.getItem("bgMusic") === "1") {
@@ -62,25 +78,31 @@ function checkPassword() {
 if (continueBtn) {
   continueBtn.addEventListener("click", () => {
     localStorage.setItem("bgMusic", "1");
-    window.location.href = "/love.html";
+    navigateWithFade("/love.html");
   });
 }
 
 if (finalContinue) {
   finalContinue.addEventListener("click", () => {
-    window.location.href = "/final.html";
+    navigateWithFade("/final.html");
   });
 }
 
 if (photosContinue) {
   photosContinue.addEventListener("click", () => {
-    window.location.href = "/photos.html";
+    navigateWithFade("/photos.html");
   });
 }
 
 if (musicContinue) {
   musicContinue.addEventListener("click", () => {
-    window.location.href = "/music.html";
+    navigateWithFade("/music.html");
+  });
+}
+
+if (restartBtn) {
+  restartBtn.addEventListener("click", () => {
+    navigateWithFade("/index.html");
   });
 }
 
@@ -184,7 +206,7 @@ if (audioButtons.length > 0) {
 // Floating hearts stream on landing page
 const floatingStream = document.querySelector(".floating-stream");
 if (floatingStream) {
-  for (let i = 0; i < 24; i += 1) {
+  for (let i = 0; i < 72; i += 1) {
     const heart = document.createElement("span");
     heart.className = "float-heart";
     heart.style.left = `${Math.random() * 100}%`;
@@ -202,8 +224,13 @@ const yesMessage = document.getElementById("yesMessage");
 
 if (yesBtn && yesMessage) {
   yesBtn.addEventListener("click", () => {
+    yesMessage.textContent = "I LOVE YOU MERI RADHA";
     yesMessage.classList.remove("hidden");
+    yesMessage.classList.add("show");
+    if (noBtn) noBtn.style.display = "none";
+    if (restartBtn) restartBtn.classList.remove("hidden");
     launchConfetti();
+    launchHeartShower();
   });
 }
 
@@ -251,7 +278,7 @@ if (canvas) {
 
 function launchConfetti() {
   if (!canvas || !ctx) return;
-  confetti = Array.from({ length: 120 }, () => ({
+  confetti = Array.from({ length: 250 }, () => ({
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height - canvas.height,
     r: Math.random() * 6 + 4,
@@ -259,6 +286,23 @@ function launchConfetti() {
     color: `hsl(${Math.random() * 360},70%,70%)`,
   }));
   requestAnimationFrame(updateConfetti);
+}
+
+function launchHeartShower() {
+  for (let i = 0; i < 60; i += 1) {
+    const heart = document.createElement("div");
+    heart.textContent = "💗";
+    heart.className = "big-heart";
+    heart.style.left = `${Math.random() * window.innerWidth}px`;
+    heart.style.top = `${window.innerHeight + Math.random() * 200}px`;
+    heart.style.transition = "transform 3.2s ease, opacity 3.2s ease";
+    document.body.appendChild(heart);
+    setTimeout(() => {
+      heart.style.transform = `translateY(-${window.innerHeight + 200}px) scale(1.3)`;
+      heart.style.opacity = "0";
+    }, i * 40);
+    setTimeout(() => heart.remove(), 3400);
+  }
 }
 
 function updateConfetti() {
