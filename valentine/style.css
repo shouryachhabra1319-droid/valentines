@@ -1,0 +1,219 @@
+:root {
+  /* Customize colors here */
+  --deep-red: #5c1a1b;
+  --blush: #f2c6c6;
+  --cream: #fdf7f1;
+  --warm: #d9b3a3;
+  --text: #2a1f1f;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Inter", sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+.hidden { display: none; }
+
+.section {
+  padding: 80px 8vw;
+  text-align: center;
+}
+
+/* Password Gate */
+.gate {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, var(--cream), var(--blush));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 10;
+}
+.gate__content {
+  text-align: center;
+  z-index: 2;
+}
+.gate__hint {
+  font-size: 1.6rem;
+  font-family: "Playfair Display", serif;
+  margin-bottom: 20px;
+}
+.gate__form {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.gate__form input {
+  padding: 12px 16px;
+  border: 1px solid var(--warm);
+  border-radius: 10px;
+  background: #fff;
+}
+.gate__form button {
+  padding: 12px 20px;
+  border: none;
+  background: var(--deep-red);
+  color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.gate__error {
+  margin-top: 12px;
+  color: #8b3a3a;
+  font-size: 0.95rem;
+}
+
+/* Ambient background animation */
+.ambient {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.3), transparent 40%),
+              radial-gradient(circle at 80% 60%, rgba(255,255,255,0.2), transparent 50%);
+  animation: glow 6s ease-in-out infinite alternate;
+}
+@keyframes glow {
+  from { opacity: 0.6; transform: scale(1); }
+  to { opacity: 1; transform: scale(1.05); }
+}
+
+/* Hero */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--cream), #fff);
+  position: relative;
+}
+.hero h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2rem, 3vw, 3.2rem);
+}
+.subtext {
+  margin-top: 12px;
+  opacity: 0.8;
+}
+.primary, .ghost {
+  padding: 12px 26px;
+  margin-top: 26px;
+  border-radius: 999px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.primary { background: var(--deep-red); color: #fff; border: none; }
+.ghost { background: transparent; color: var(--deep-red); border: 1px solid var(--deep-red); }
+.primary:hover, .ghost:hover { transform: translateY(-2px); }
+
+/* Floating hearts */
+.floating-hearts::before, .floating-hearts::after {
+  content: "❤";
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.5;
+  animation: float 8s infinite ease-in-out;
+}
+.floating-hearts::after {
+  left: 70%;
+  top: 30%;
+  animation-duration: 10s;
+}
+@keyframes float {
+  from { transform: translateY(0); opacity: 0.4; }
+  to { transform: translateY(-80px); opacity: 0.8; }
+}
+
+/* Story */
+.story__grid {
+  display: grid;
+  gap: 20px;
+  margin-top: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+.card {
+  padding: 20px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
+/* Music */
+.music__grid {
+  margin-top: 30px;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.song-card {
+  text-decoration: none;
+  color: inherit;
+  background: #fff;
+  padding: 16px;
+  border-radius: 14px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+.play {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--blush);
+  display: grid;
+  place-items: center;
+}
+.hint { margin-top: 12px; font-size: 0.9rem; opacity: 0.7; }
+
+/* Love Note */
+.handwritten {
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+  margin-top: 20px;
+  min-height: 80px;
+}
+
+/* Final */
+.final__buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+}
+.yes-message {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: var(--deep-red);
+}
+
+/* Reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease;
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Confetti canvas */
+#confetti {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .gate__form {
+    flex-direction: column;
+  }
+  .final__buttons {
+    flex-direction: column;
+  }
+}

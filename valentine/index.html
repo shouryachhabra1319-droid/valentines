@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Will You Be My Valentine?</title>
+
+  <!-- Google Fonts: elegant + handwritten -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Dancing+Script:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Password Gate -->
+  <section id="gate" class="gate">
+    <div class="gate__content">
+      <p class="gate__hint">Only you can enter 💌</p>
+      <div class="gate__form">
+        <input id="passwordInput" type="password" placeholder="Enter password" autocomplete="off" />
+        <button id="enterBtn">Enter</button>
+      </div>
+      <p id="gateError" class="gate__error" aria-live="polite"></p>
+    </div>
+    <div class="ambient"></div>
+  </section>
+
+  <!-- Main Site -->
+  <main id="mainSite" class="hidden">
+    <!-- Landing / Hero -->
+    <section class="section hero" id="home">
+      <div class="hero__inner">
+        <h1>Hey love… I built something just for you.</h1>
+        <p class="subtext">A tiny corner of the internet where my heart lives.</p>
+        <button class="primary" id="continueBtn">Continue</button>
+      </div>
+      <div class="floating-hearts" aria-hidden="true"></div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="section story" id="story">
+      <h2>Our Story</h2>
+      <div class="story__grid">
+        <!-- Edit the text below for your story -->
+        <div class="card reveal">
+          <h3>How we met</h3>
+          <p><!-- EDIT THIS TEXT -->The first time I saw you, the whole room softened.</p>
+        </div>
+        <div class="card reveal">
+          <h3>First date</h3>
+          <p><!-- EDIT THIS TEXT -->You laughed, and I knew I wanted that sound forever.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Favorite memory</h3>
+          <p><!-- EDIT THIS TEXT -->A simple night, a quiet moment, and a lifetime in one glance.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Music Section -->
+    <section class="section music" id="music">
+      <h2>Our Songs</h2>
+      <div class="music__grid">
+        <!-- Add your song links in the href attributes below -->
+        <!-- Example: href="https://open.spotify.com/..." -->
+        <a class="song-card reveal" href="" target="_blank" rel="noopener">
+          <span class="play">▶</span>
+          <div>
+            <p class="song-title">Song Title</p>
+            <p class="song-artist">Artist</p>
+          </div>
+        </a>
+        <a class="song-card reveal" href="" target="_blank" rel="noopener">
+          <span class="play">▶</span>
+          <div>
+            <p class="song-title">Song Title</p>
+            <p class="song-artist">Artist</p>
+          </div>
+        </a>
+        <a class="song-card reveal" href="" target="_blank" rel="noopener">
+          <span class="play">▶</span>
+          <div>
+            <p class="song-title">Song Title</p>
+            <p class="song-artist">Artist</p>
+          </div>
+        </a>
+      </div>
+      <p class="hint">Add Spotify/YouTube/MP3 links in the empty hrefs above.</p>
+    </section>
+
+    <!-- Love Note -->
+    <section class="section note" id="note">
+      <h2>A Note for You</h2>
+      <p id="typedNote" class="handwritten"></p>
+      <!-- EDIT NOTE CONTENT in script.js -->
+    </section>
+
+    <!-- Final Question -->
+    <section class="section final" id="final">
+      <h2>Will you be my Valentine?</h2>
+      <div class="final__buttons">
+        <button id="yesBtn" class="primary">YES 💖</button>
+        <button id="noBtn" class="ghost">NO 🙃</button>
+      </div>
+      <p id="yesMessage" class="yes-message hidden">You just made me the happiest person alive. 💞</p>
+      <canvas id="confetti"></canvas>
+    </section>
+  </main>
+
+  <!-- Deployment Note -->
+  <!-- To deploy on Vercel: drag & drop this folder into Vercel, or push to GitHub and import. -->
+
+  <script src="script.js"></script>
+</body>
+</html>
