@@ -112,6 +112,7 @@ function typeNote() {
   }
 }
 
+// change
 if (typedNote) {
   typeNote();
 }
